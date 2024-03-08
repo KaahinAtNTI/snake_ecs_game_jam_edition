@@ -2,6 +2,8 @@ name: Build and Release Game
 
 on:
   push:
+    tags:
+      - 'v*'  # Trigger workflow for any tag starting with 'v'
     branches:
       - main
     paths:
