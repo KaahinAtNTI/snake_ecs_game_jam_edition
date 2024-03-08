@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "python-template"
+name = "Snake The Game "
 version = "0.1.0"
-description = ""
-authors = ["Your Name <you@example.com>"]
+description = "This game is developed to demonstrate how to create a game using the Entity-Component-System Architecture, serving as preparation for advanced study in game development. It is part of the 'Applied Programming' course in the 2023/24 curriculum at NTI Gymnasiet."
+authors = ["KaahinAtNTI abdirahman.mohamed@ga.ntig.se"]
 
 [tool.poetry.dependencies]
 python = ">=3.10.0,<3.12"
