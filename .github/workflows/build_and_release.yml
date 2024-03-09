@@ -9,15 +9,34 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: windows-latest  
     steps:
       - uses: actions/checkout@v2
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.x'
+          python-version: '3.12.2'
+
+      - name: Cache Python dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~\.cache\pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
       - name: Install Pygame and PyInstaller
         run: pip install pygame pyinstaller
+
       - name: Build Executable
-        run: pyinstaller --onefile --name TheSnake --distpath ./bin src/main.py --noconsole
-      
+        run: pyinstaller --noconfirm \
+            --log-level=WARN \
+            --path . \
+            --name TheSnake \
+            --icon ./assets/TheSnake.ico \
+            --distpath ./bin \
+            --workpath ./build \
+            --noconsole \
+            --onefile \
+            src/main.py
