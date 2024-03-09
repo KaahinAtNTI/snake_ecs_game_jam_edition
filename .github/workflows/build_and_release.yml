@@ -17,9 +17,7 @@ jobs:
         with:
           python-version: '3.x'
       - name: Install Pygame and PyInstaller
-        run: |
-          pip install pygame pyinstaller
+        run: pip install pygame pyinstaller
       - name: Build Executable
-        run: |
-          pyinstaller --onefile --name TheSnake --distpath ./bin src/main.py
+        run: pyinstaller --onefile --name TheSnake --distpath ./bin src/main.py --noconsole
       
