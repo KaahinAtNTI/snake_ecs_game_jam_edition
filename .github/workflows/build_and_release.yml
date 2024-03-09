@@ -3,13 +3,13 @@ name: Build and Release Game
 on:
   push:
     tags:
-      - 'v*'  
+      - 'v*'
     paths:
       - 'src/**'
 
 jobs:
   build:
-    runs-on: windows-latest  
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
 
@@ -26,8 +26,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
 
-      - name: Install Pygame and PyInstaller
-        run: pip install pygame pyinstaller
+      - name: Install dependencies
+        run: pip install -r requirements.txt
 
       - name: Build Executable
         run: pyinstaller --noconfirm \
